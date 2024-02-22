@@ -1,7 +1,5 @@
 {{> layout/header}}
-
 <div class="container p-5">
-
     <table class="table table-striped">
         <thead>
         <tr>
@@ -13,24 +11,22 @@
         </tr>
         </thead>
         <tbody id="board-box">
-
         </tbody>
     </table>
-
 </div>
 
 <script>
-     function del(boardId){
-            $.ajax({
-                url: `/api/boards/${boardId}`,
-                type: "delete"
-            }).done((res)=>{
-                $(`#board-${boardId}`).remove();
-            }).fail((res)=>{
-                alert(res.responseJSON.msg);
-                location.reload(); // f5
-            });
-        }
+    function del(boardId){
+        $.ajax({
+            url: `/api/boards/${boardId}`,
+            type: "delete"
+        }).done((res)=>{
+            $(`#board-${boardId}`).remove();
+        }).fail((res)=>{
+            alert(res.responseJSON.msg);
+            location.reload(); // f5
+        });
+    }
     $.ajax({
         url: "/api/boards",
         type: "get"
@@ -62,5 +58,4 @@
                 </tr>`;
     }
 </script>
-
 {{> layout/footer}}
